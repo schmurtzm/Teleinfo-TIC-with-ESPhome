@@ -7,6 +7,8 @@ Composant Custom permettant de récupérer le flux TéléInformation depuis son 
 
 N'ayant pas d'abonnement HP/HC seules les étiquettes suivantes ont été implémentées : IINST, ISOUSC, PAPP, BASE et ADCO, n
 
+# Exemple de montage :
+![](https://raw.githubusercontent.com/schmurtzm/Teleinfo-TIC-with-ESPhome/master/example%20Wemos%20D1%20(1).jpg)
 
 # Quelques informations complémentaires :
 
@@ -34,7 +36,7 @@ Si votre montage ne fonctionne pas utilisez un oscilloscope en sortie de TIC, pu
 ![](https://raw.githubusercontent.com/schmurtzm/LibTeleinfo/Autoconnect/doc/FTDI-diag-schema.png)
 source du schéma https://www.kzenjoy.net/2015/la-teleinformation-sous-jeedom/
 
-Ensuite installez [termite](https://www.compuphase.com/software_termite.htm) avec le paramétrage suivant : 
+Ensuite installez [termite](https://www.compuphase.com/software_termite.htm) (1200 Baud)
 
 
 Merci à Gael Benoit, auteur originel de ce Yaml.

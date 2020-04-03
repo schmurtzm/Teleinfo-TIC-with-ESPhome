@@ -20,14 +20,12 @@ N'ayant pas d'abonnement HP/HC seules les étiquettes suivantes ont été implé
    Pour un linky, il convient de changer la résistance d'entrée du TIC par une valeur plus faible (1kΩ ou 1.2kΩ au lieu de 4.7kΩ)
 # Aide mémoire pour le montage :
 
-- Illustration pour vérifier la polarité de l'optocoupleur et du mosfet:
+- Schéma de montage (bien vérifier la polarité de l'optocoupleur et du mosfet) (RXD = GPIO 13 = D7 sur Wemos D1 Mini) :
 
 ![](https://raw.githubusercontent.com/schmurtzm/LibTeleinfo/Autoconnect/doc/Teleinfo-Details.png)
 
 
-- Rappel du schema complet pour ESP (RXD = GPIO 13 = D7 sur Wemos D1 Mini) :
-
-![](https://raw.githubusercontent.com/schmurtzm/LibTeleinfo/Autoconnect/doc/Wifinfo-sch.png)
+- Beaucoup d'informations complémentaires sur le blog de [Charles Hallard](https://hallard.me/wifinfo/) :
 
 
 # diagnostiquer votre montage

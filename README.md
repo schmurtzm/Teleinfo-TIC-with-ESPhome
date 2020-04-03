@@ -3,12 +3,10 @@ Composant Custom pour ESPhome permettant de récupérer le flux TéléInformatio
 Compatible ESP8266 et ESP32.
 
 ---
-> **/!\ Il ne faut surtout pas connecter votre ESP32 directement au compteur      /!\\**<br />
+> **/!\ Il ne faut surtout pas connecter votre ESP32 directement au compteur      /!\\**<br/>
 > **/!\ Il faut passer par un octocoupleur comme indiqué dans montage-de-base.jpg /!\\**
 
 ---
-
-
 
 N'ayant pas d'abonnement HP/HC seules les étiquettes suivantes ont été implémentées : IINST, ISOUSC, PAPP, BASE et ADCO, n
 
@@ -23,10 +21,12 @@ N'ayant pas d'abonnement HP/HC seules les étiquettes suivantes ont été implé
 # Aide mémoire pour le montage :
 
 - Illustration pour vérifier la polarité de l'optocoupleur et du mosfet:
+
 ![](https://raw.githubusercontent.com/schmurtzm/LibTeleinfo/Autoconnect/doc/Teleinfo-Details.png)
 
 
 - Rappel du schema complet pour ESP :
+
 ![](https://raw.githubusercontent.com/schmurtzm/LibTeleinfo/Autoconnect/doc/Wifinfo-sch.png)
 
 
@@ -43,5 +43,15 @@ source du schéma https://www.kzenjoy.net/2015/la-teleinformation-sous-jeedom/
 
 Ensuite installez [termite](https://www.compuphase.com/software_termite.htm) (1200 Baud)
 
+## Help is welcome ! 
+Vous voulez améliorer ce projet ? N'hésitez pas, **Participez !** : éditez et publiez vos modification :)
+Vous pouvez également m'acheter un café pour garder ma mtoviation au top !<br/>
+[![Buy me a coffee][buymeacoffee-shield]][buymeacoffee]
+<br/><br/>
+
+
 
 Merci à Gael Benoit, auteur originel de ce Yaml.
+
+[buymeacoffee-shield]: https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg
+[buymeacoffee]: https://www.buymeacoffee.com/schmurtz

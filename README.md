@@ -12,6 +12,10 @@ N'ayant pas d'abonnement HP/HC seules les étiquettes suivantes ont été implé
 
 # Exemple de montage :
 ![](https://raw.githubusercontent.com/schmurtzm/Teleinfo-TIC-with-ESPhome/master/example%20Wemos%20D1/example%20Wemos%20D1%20(1).jpg)
+([Un fichier .STL](https://github.com/schmurtzm/Teleinfo-TIC-with-ESPhome/blob/master/example%20Wemos%20D1/Teleinfo%20box%20Schmurtz.stl) est également fourni dans les sources pour imprimer [un boitier adapté à ce montage](https://raw.githubusercontent.com/schmurtzm/Teleinfo-TIC-with-ESPhome/master/example%20Wemos%20D1/example%20Wemos%20D1%20(5).jpg)).
+
+
+
 
 # Quelques informations complémentaires :
 

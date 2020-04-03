@@ -1,0 +1,122 @@
+esphome:
+  name: esplinky
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: "XXXXXXXXXXXXX"
+  password: "XXXXXXXXXXXXX"
+
+# ajout du composant uart pour la communication série avec la sortie TIC du compteur
+# GPIO13 = Pin D7 sur Wemos D1
+uart:
+  tx_pin: GPIO14
+  rx_pin: GPIO13
+  baud_rate: 1200
+  id: uart_bus
+
+
+# déclaration du fichier source du composant custom
+  includes:
+    - my_tic_component.h
+
+
+# alias pour accéder l'instance du composant
+substitutions:
+  name: "TIC"
+  init: 'MyTicComponent::instance(id(uart_bus));'
+
+
+# déclaration du composant custom
+custom_component:
+  - id: my_tic
+    lambda: |-
+      auto my_tic = ${init}
+      App.register_component(my_tic);
+      return {my_tic};
+
+
+# déclaration des sensors numérique
+# les sensors doivent être déclarés dans l'ordre de la fonction lambda
+sensor:
+  - platform: wifi_signal
+    name: "WiFi Signal Sensor"
+    update_interval: 60s
+    unit_of_measurement: dB
+    accuracy_decimals: 0
+    force_update: false
+    icon: mdi:wifi
+  - platform: uptime
+    name: "Uptime Sensor"
+    update_interval: 60s
+    unit_of_measurement: s
+    accuracy_decimals: 0
+    force_update: false
+    icon: mdi:timer
+  - platform: custom
+    lambda: |-
+      auto my_tic = ${init}
+      return {my_tic->sensor_IINST, my_tic->sensor_ISOUSC, my_tic->sensor_PAPP, my_tic->sensor_BASE};
+    sensors:
+      - name: "EDF-Intensite"
+        unit_of_measurement: A
+        accuracy_decimals: 0
+        icon: mdi:power-plug
+      - name: "EDF-Intensite souscrite"
+        unit_of_measurement: A
+        accuracy_decimals: 0
+        icon: mdi:power-plug
+      - name: "EDF-Puissance"
+        unit_of_measurement: W
+        accuracy_decimals: 0
+        icon: mdi:power-plug
+      - name: "EDF-Index"
+        unit_of_measurement: kWh
+        accuracy_decimals: 0
+        icon: mdi:home-analytics
+
+
+# déclaration du sensor texte, c'est juste l'identifiant du compteur
+text_sensor:
+  - platform: custom
+    lambda: |-
+      auto my_tic = ${init}
+      return {my_tic->sensor_ADCO};
+    text_sensors:
+      name: "ADCO"
+
+binary_sensor:
+  - platform: status
+    name: "NodeMCU Status"
+
+
+# switch permettant de stopper les mises à jour
+switch:
+  - platform: custom
+    lambda: |-
+      auto my_tic = ${init}
+      return{my_tic};
+    switches:
+      name: "Receive"
+
+
+# Enable web server
+web_server:
+  port: 80
+
+# Enable logging
+logger:
+#  level: VERY_VERBOSE
+
+
+# Enable Home Assistant API
+api:
+  reboot_timeout: 15min
+  port: 6053
+  password: ''
+
+ota:
+  safe_mode: true
+  port: 3232
+  password: ''
+

@@ -20,7 +20,11 @@ N'ayant pas d'abonnement HP/HC seules les étiquettes suivantes ont été implé
    Pour un linky, il convient de changer la résistance d'entrée du TIC par une valeur plus faible (1kΩ ou 1.2kΩ au lieu de 4.7kΩ)
 # Aide mémoire pour le montage :
 
-- Schéma de montage (bien vérifier la polarité de l'optocoupleur et du mosfet) (RXD = GPIO 13 = D7 sur Wemos D1 Mini) :
+- Schéma de montage :<br/>
+    * bien vérifier la polarité de l'optocoupleur et du mosfet<br/>
+    * RXD = GPIO 13 = D7 sur Wemos D1 Mini<br/>
+    * R1 = 1kΩ si linky ,4.7kΩ si compteur électronique (acienne génération)<br/>
+    * V+ = 3.3v
 
 ![](https://raw.githubusercontent.com/schmurtzm/LibTeleinfo/Autoconnect/doc/Teleinfo-Details.png)
 

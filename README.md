@@ -25,7 +25,7 @@ N'ayant pas d'abonnement HP/HC seules les étiquettes suivantes ont été implé
 ![](https://raw.githubusercontent.com/schmurtzm/LibTeleinfo/Autoconnect/doc/Teleinfo-Details.png)
 
 
-- Rappel du schema complet pour ESP :
+- Rappel du schema complet pour ESP (RXD = GPIO 13 = D7 sur Wemos D1 Mini) :
 
 ![](https://raw.githubusercontent.com/schmurtzm/LibTeleinfo/Autoconnect/doc/Wifinfo-sch.png)
 

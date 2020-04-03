@@ -46,7 +46,7 @@ source du schéma https://www.kzenjoy.net/2015/la-teleinformation-sous-jeedom/
 Ensuite installez [termite](https://www.compuphase.com/software_termite.htm) (1200 Baud)
 
 ## Help is welcome ! 
-Vous voulez améliorer ce projet ? N'hésitez pas, **Participez !** : éditez et publiez vos modification :)
+Vous voulez améliorer ce projet ? N'hésitez pas, **Participez !** : éditez et publiez vos modification :)<br/>
 Vous pouvez également m'acheter un café pour garder ma mtoviation au top !<br/>
 [![Buy me a coffee][buymeacoffee-shield]][buymeacoffee]
 <br/><br/>

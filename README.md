@@ -1,14 +1,19 @@
-Ceci permet d'utiliser un ESP8266/ESP32 pour récupérer les informations d'un compteur électrique via ESPhome
+Composant Custom pour ESPhome permettant de récupérer le flux TéléInformation depuis son compteur électronique ou linky (en mode historique). Les informations seront ensuite automatiquement ajoutée dans Home Assistant. 
 
-Composant Custom permettant de récupérer le flux TéléInformation depuis son compteur électronique ou linky (en mode historique)
+Compatible ESP8266 et ESP32.
 
-/!\ Il ne faut surtout pas connecter votre ESP32 directement au compteur      /!\
-/!\ Il faut passer par un octocoupleur comme indiqué dans montage-de-base.jpg /!\
+---
+> **/!\ Il ne faut surtout pas connecter votre ESP32 directement au compteur      /!\\**<br />
+> **/!\ Il faut passer par un octocoupleur comme indiqué dans montage-de-base.jpg /!\\**
+
+---
+
+
 
 N'ayant pas d'abonnement HP/HC seules les étiquettes suivantes ont été implémentées : IINST, ISOUSC, PAPP, BASE et ADCO, n
 
 # Exemple de montage :
-![](https://raw.githubusercontent.com/schmurtzm/Teleinfo-TIC-with-ESPhome/master/example%20Wemos%20D1%20(1).jpg)
+![](https://raw.githubusercontent.com/schmurtzm/Teleinfo-TIC-with-ESPhome/master/example%20Wemos%20D1/example%20Wemos%20D1%20(1).jpg)
 
 # Quelques informations complémentaires :
 

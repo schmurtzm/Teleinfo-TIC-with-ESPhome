@@ -2,7 +2,11 @@ esphome:
   name: esplinky
   platform: ESP8266
   board: d1_mini
-
+# déclaration du fichier source du composant custom
+  includes:
+    - my_tic_component.h # l'emplacement sous l'uart posé probleme pour moi, donc en le mettant la sa fonctionné
+    
+    
 wifi:
   ssid: "XXXXXXXXXXXXX"
   password: "XXXXXXXXXXXXX"
@@ -14,11 +18,6 @@ uart:
   rx_pin: GPIO13
   baud_rate: 1200
   id: uart_bus
-
-
-# déclaration du fichier source du composant custom
-  includes:
-    - my_tic_component.h
 
 
 # alias pour accéder l'instance du composant

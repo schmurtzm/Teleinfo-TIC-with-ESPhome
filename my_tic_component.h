@@ -59,8 +59,7 @@ class MyTicComponent : public PollingComponent, public UARTDevice, public Switch
 	}
 	
 	void processString(String str) {
-		//ESP_LOGD("tic_received", str.c_str());  // For ESP32 ?
-		ESP_LOGD("tic", "tic_received %s", str.c_str());
+		//ESP_LOGD("tic_received", str.c_str());
 		char separator = ' ';
 		if (str.indexOf(separator) > -1)
 		{
@@ -76,12 +75,10 @@ class MyTicComponent : public PollingComponent, public UARTDevice, public Switch
   
 	void processCommand(String etiquette, String value)
 	{
-		//ESP_LOGD("tic_etiquette", etiquette.c_str());  // For ESP32 ?
-		//ESP_LOGD("tic_value", value.c_str());  // For ESP32 ?
-		//ESP_LOGD(etiquette.c_str(), value.c_str());  // For ESP32 ?
-		
-		ESP_LOGD("tic", "tic_etiquette %s", etiquette.c_str());
-		ESP_LOGD("tic", "tic_value %s", value.c_str());	  
+		//ESP_LOGD("tic_etiquette", etiquette.c_str());
+		//ESP_LOGD("tic_value", value.c_str());
+		//ESP_LOGD(etiquette.c_str(), value.c_str());
+	  
 		if (etiquette == "ADCO") // adresse
 		{
 			if (adco != value)

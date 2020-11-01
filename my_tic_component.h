@@ -18,8 +18,8 @@ class MyTicComponent : public PollingComponent, public UARTDevice, public Switch
 	float papp = 0.0;
 	float base = 0.0;
 	String adco = "";
+	
   
-	String strLastStatus = "";
 	static MyTicComponent* instance(UARTComponent *parent)
 	{
 		static MyTicComponent* INSTANCE = new MyTicComponent(parent);
@@ -41,25 +41,37 @@ class MyTicComponent : public PollingComponent, public UARTDevice, public Switch
 		while (available()>0)
 		{
 			char c = read();
-			// le composant UART reçoit en 8bits, on converti en 7bits
-			c &= 0x7f;
+			// le composant UART reçoit en 8bits, on converti en 7bits  -> Mod by schmurtz : 
+			// no more useful since ESPhome Uart improvements : https://github.com/esphome/esphome/commit/fb2b7ade41dc3f5fae8a68e034b6506bf5902b0b
+			//c &= 0x7f;
+			
 			// \r = fin d'un message, on sort de la boucle pour traiter le message
 			if (c == '\r')
 				break;
 			buff += c;
+			
 			// \n = début d'un message, on vide le buffer
-			if (c == '\n')
+			if (c == '\n' || buff.length() > 50){
+				//ESP_LOGI("Buffer", "Buffer Size :  %d", buff.length());
+				if (buff.length() > 50){
+					ESP_LOGW("Buffer", "Buffer was too big, cleaned !!!");
+				}
 				buff = "";
+				
+			}
 		}
 		
 		if (enable && (buff != ""))
 		{
 			processString(buff);
+			//ESP_LOGI("Buffer", "Buffer Size :  %d", buff.length());
+			buff = "";
 		}
 	}
 	
 	void processString(String str) {
-		//ESP_LOGD("tic_received", str.c_str());  // For ESP32 ?
+		//ESP_LOGD("tic_received", str.c_str());
+		
 		ESP_LOGD("tic", "tic_received %s", str.c_str());
 		char separator = ' ';
 		if (str.indexOf(separator) > -1)
@@ -76,9 +88,9 @@ class MyTicComponent : public PollingComponent, public UARTDevice, public Switch
   
 	void processCommand(String etiquette, String value)
 	{
-		//ESP_LOGD("tic_etiquette", etiquette.c_str());  // For ESP32 ?
-		//ESP_LOGD("tic_value", value.c_str());  // For ESP32 ?
-		//ESP_LOGD(etiquette.c_str(), value.c_str());  // For ESP32 ?
+		//ESP_LOGD("tic_etiquette", etiquette.c_str());
+		//ESP_LOGD("tic_value", value.c_str());
+		//ESP_LOGD(etiquette.c_str(), value.c_str());
 		
 		ESP_LOGD("tic", "tic_etiquette %s", etiquette.c_str());
 		ESP_LOGD("tic", "tic_value %s", value.c_str());	  
@@ -108,7 +120,7 @@ class MyTicComponent : public PollingComponent, public UARTDevice, public Switch
 		}
 		else if (etiquette == "IINST")
 		{
-			if (isousc != value.toFloat())
+			if (iinst != value.toFloat())
 			{
 				sensor_IINST->publish_state(value.toFloat());
 				iinst = value.toFloat();

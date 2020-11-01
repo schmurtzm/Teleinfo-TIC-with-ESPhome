@@ -2,29 +2,53 @@ esphome:
   name: esplinky
   platform: ESP8266
   board: d1_mini
+# déclaration du fichier source du composant custom (déposer la fichier my_tic_component.h à la racine de ESPhome)
+  includes:
+    - my_tic_component.h
 
 wifi:
   ssid: "XXXXXXXXXXXXX"
   password: "XXXXXXXXXXXXX"
 
+# facultative web server, enable if you need it
+web_server:
+  port: 80
+
+# Example configuration entry
+#debug:    # When enabled, logger must be at least debug (default) below.
+
+
+# Logger configuration
+logger:     
+  baud_rate: 0   # disable logging via UART, help to avoid numerous crash with ESP_LOGD
+  level: INFO   # INFO for less log, put DEBUG to view all the linky's "étiquettes" received  in the logs
+  esp8266_store_log_strings_in_flash: False     # recommanded for ESP8266 https://esphome.io/components/sensor/custom.html
+
+# Enable Home Assistant API (set a password here for more security)
+api:
+  password: ''
+
+# Enable OTA (set a password here for more security)
+ota:
+  password: ''
+
+
 # ajout du composant uart pour la communication série avec la sortie TIC du compteur
 # GPIO13 = Pin D7 sur Wemos D1
 uart:
-  tx_pin: GPIO14
+#  tx_pin: GPIO15
   rx_pin: GPIO13
   baud_rate: 1200
-  id: uart_bus
-
-
-# déclaration du fichier source du composant custom
-  includes:
-    - my_tic_component.h
+  id: uart0
+  parity: EVEN
+  data_bits: 7
+  stop_bits: 1
 
 
 # alias pour accéder l'instance du composant
 substitutions:
   name: "TIC"
-  init: 'MyTicComponent::instance(id(uart_bus));'
+  init: 'MyTicComponent::instance(id(uart0));'
 
 
 # déclaration du composant custom
@@ -98,25 +122,4 @@ switch:
       return{my_tic};
     switches:
       name: "Receive"
-
-
-# Enable web server
-web_server:
-  port: 80
-
-# Enable logging
-logger:
-#  level: VERY_VERBOSE
-
-
-# Enable Home Assistant API
-api:
-  reboot_timeout: 15min
-  port: 6053
-  password: ''
-
-ota:
-  safe_mode: true
-  port: 3232
-  password: ''
 

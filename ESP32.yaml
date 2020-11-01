@@ -22,12 +22,37 @@ wifi:
   reboot_timeout: 15min
   use_address: tic.local
 
+captive_portal:
+
+# Enable web server
+web_server:
+  port: 80
+
+# Enable logging
+logger:     
+  baud_rate: 0   # disable logging via UART, help to avoid numerous crash with ESP_LOGD
+  level: INFO   # INFO for less log, put DEBUG to view all the linky's "étiquettes" received  in the logs
+
+# Enable Home Assistant API
+api:
+  reboot_timeout: 15min
+  port: 6053
+  password: ''
+
+ota:
+  safe_mode: true
+  port: 3232
+  password: ''
+  
 # ajout du composant uart pour la communication série avec la sortie TIC du compteur
 uart:
   tx_pin: GPIO17
   rx_pin: GPIO16
   baud_rate: 1200
   id: uart_bus
+  parity: EVEN
+  data_bits: 7
+  stop_bits: 1
 
 # alias pour accéder l'instance du composant
 substitutions:
@@ -104,23 +129,4 @@ switch:
     switches:
       name: "Receive"
       
-captive_portal:
 
-# Enable web server
-web_server:
-  port: 80
-
-# Enable logging
-logger:
-#  level: VERY_VERBOSE
-
-# Enable Home Assistant API
-api:
-  reboot_timeout: 15min
-  port: 6053
-  password: ''
-
-ota:
-  safe_mode: true
-  port: 3232
-  password: ''
